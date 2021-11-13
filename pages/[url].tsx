@@ -1,0 +1,23 @@
+import Axios from "axios";
+import { GetServerSideProps } from "next";
+
+const Url = () => {
+  return null;
+};
+
+export const getServerSideProps: GetServerSideProps = async (context: any) => {
+  const { url } = context.params;
+
+  const home =
+    process.env.NODE_ENV === "development"
+    ? "http://localhost:3000"
+    : process.env.PROD_HOST;
+
+  const info = await Axios.post(`${home}/api/getShortUrl`, {
+    urlId: url,
+  });
+  return { redirect: { destination: info.data, permanent: true, }}
+
+};
+
+export default Url;
