@@ -27,10 +27,9 @@ const index = () => {
           href="https://fonts.googleapis.com/css2?family=Acme&display=swap"
           rel="stylesheet"
         />
-        <title>URL Shortener 🐱‍🚀</title>
+        <title>URL Shortener</title>
       </Head>
-      <h1 className="title">
-        URL Shortener <span>😎</span>
+      <h1 className="title"> Simple URL Shortener <span></span>
       </h1>
       <input
         className="inp"
