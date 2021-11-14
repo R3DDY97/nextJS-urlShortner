@@ -11,6 +11,12 @@ const index = () => {
     process.env.NODE_ENV === "development" ? "http://localhost:3000" : "https://venkata.vercel.app";
 
   const getShortUrl = async () => {
+    try {
+      let inputUrl = new URL(url)
+    }  catch(error) {
+      alert(error.message)
+      return
+    }
     setLoad(true);
     await Axios.post("/api/shortUrl", {
       url: url,
