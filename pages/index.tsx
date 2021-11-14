@@ -6,11 +6,11 @@ const index = () => {
   const [urlId, setsUrl] = useState<string>("");
   const [load, setLoad] = useState<boolean>(false);
   const home =
-    process.env.NODE_ENV === "development" ? "localhost:3000" : process.env.PROD_HOST;
+    process.env.NODE_ENV === "development" ? "http://localhost:3000" : process.env.PROD_HOST;
 
   const getShortUrl = async () => {
     setLoad(true);
-    await Axios.post("/api/createUrl", {
+    await Axios.post("/api/shortUrl", {
       url: url,
     })
       .then((res) => {
@@ -63,7 +63,7 @@ const index = () => {
           padding: 10px 20px;
           margin: 10px;
           border: none;
-          background: #3254a8;
+          background: #90ee90;
           color: white;
           border-radius: 10px;
           font-family: "Acme", sans-serif;
@@ -78,7 +78,7 @@ const index = () => {
           border-radius: 10px 20px;
           color: white;
         }
-      `}</style>
+        `}</style>
       <button onClick={getShortUrl} className="btn">
         {load ? "loading" : "Shorten"}
       </button>
