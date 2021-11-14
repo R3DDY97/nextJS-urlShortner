@@ -14,7 +14,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     const urlId = crypto.randomBytes(3).toString("hex");
 
     try {
-        console.log("Quering db")
         let response = await client.query(
             q.Create(q.Collection("shortUrls"), {
                 data: { longUrl: url, urlId: urlId, },

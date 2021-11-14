@@ -11,7 +11,7 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
   const home =
     process.env.NODE_ENV === "development"
     ? "http://localhost:3000"
-    : process.env.PROD_HOST;
+    : "https://venkata.vercel.app";
 
   const info = await Axios.post(`${home}/api/getShortUrl`, {
     urlId: url,

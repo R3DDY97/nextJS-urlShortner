@@ -6,7 +6,7 @@ const index = () => {
   const [urlId, setsUrl] = useState<string>("");
   const [load, setLoad] = useState<boolean>(false);
   const home =
-    process.env.NODE_ENV === "development" ? "http://localhost:3000" : process.env.PROD_HOST;
+    process.env.NODE_ENV === "development" ? "http://localhost:3000" : "https://venkata.vercel.app";
 
   const getShortUrl = async () => {
     setLoad(true);
