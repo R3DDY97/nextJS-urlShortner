@@ -12,7 +12,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         let helper = client.paginate(
             q.Match(q.Index('index_url_id'), req.body.urlId))
 
-        helper.each(function(page :string) {
+        helper.each(function(page: string) {
             console.log(page);
             return res.send(page[0]);
         })
