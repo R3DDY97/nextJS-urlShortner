@@ -1,6 +1,8 @@
 import Axios from "axios";
 import React, { useState } from "react";
 import Head from "next/head";
+import Link from "next/link";
+
 const index = () => {
   const [url, setUrl] = useState<string>("");
   const [urlId, setsUrl] = useState<string>("");
@@ -21,22 +23,22 @@ const index = () => {
   };
   return (
     <div className="container">
-      <Head>
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Acme&display=swap"
-          rel="stylesheet"
-        />
-        <title>URL Shortener</title>
-      </Head>
-      <h1 className="title"> Simple URL Shortener <span></span>
-      </h1>
-      <input
-        className="inp"
-        placeholder="enter URL to be shorten"
-        onChange={(e) => setUrl(e.target.value)}
-      />
-      <style jsx>{`
+    <Head>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+    href="https://fonts.googleapis.com/css2?family=Acme&display=swap"
+    rel="stylesheet"
+    />
+    <title>URL Shortener</title>
+    </Head>
+    <h1 className="title"> Simple URL Shortener <span></span>
+    </h1>
+    <input
+    className="inp"
+    placeholder="enter URL"
+    onChange={(e) => setUrl(e.target.value)}
+    />
+    <style jsx>{`
         .container {
           display: flex;
           padding: 10px;
@@ -51,7 +53,7 @@ const index = () => {
         .inp {
           padding: 20px;
           margin: 10px;
-          width: 80%;
+          width: 50%;
           border-radius: 5px;
           border: 1px solid #000;
           border-radius: 5px;
@@ -70,21 +72,32 @@ const index = () => {
           font-size: 20px;
           cursor: pointer;
         }
-        .surl {
+        .longUrl {
           font-family: "Acme", sans-serif;
           padding: 10px;
           margin: 10px;
-          background-color: #32a852;
+          background-color: #ff4500;
           border-radius: 10px 20px;
-          color: white;
+          color: yellow;
+         }
+        .openUrl {
+          font-family: "Acme", sans-serif;
+          padding: 10px;
+          margin: 10px;
+          border-radius: 10px 20px;
+          color: red;
+          background-color: #ffff00;
+         }
         }
-        `}</style>
-      <button onClick={getShortUrl} className="btn">
-        {load ? "loading" : "Shorten"}
-      </button>
-      {urlId.length > 0 ? <p className="id">{urlId}</p> : null}
+    `}</style>
+    <button onClick={getShortUrl} className="btn">
+    {load ? "loading" : "Shorten"}
+    </button>
+
+    {urlId.length > 0 ? <p className="longUrl">{urlId}</p> : null}
+    {urlId.length > 0 ? <Link href={urlId}><a className="openUrl" target="_blank">Click to open</a></Link> : null}
     </div>
   );
-};
+    };
 
 export default index;
